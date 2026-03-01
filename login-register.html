@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MindX Cinema — Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/login.css" />
+  </head>
+  <body>
+
+    <!-- Background cinematic layers -->
+    <div class="bg-layer bg-img"></div>
+    <div class="bg-layer bg-vignette"></div>
+    <div class="bg-layer bg-scanlines"></div>
+    <div class="film-grain"></div>
+
+    <!-- Logo -->
+    <nav>
+      <div class="logo">
+        <span class="logo-icon">▶</span>
+        <span class="logo-text">Eclipse<em>CINEMA</em></span>
+      </div>
+    </nav>
+
+    <!-- Auth Container -->
+    <div class="auth-container">
+      <!-- Sliding panel wrapper -->
+      <div class="panels-wrapper" id="panelsWrapper">
+
+        <!-- LOGIN PANEL -->
+        <div class="panel" id="loginPanel">
+          <div class="panel-header">
+            <div class="panel-tag">Welcome back</div>
+            <h1>Sign<br/><span>In</span></h1>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <div class="form-field">
+              <input type="email" id="loginEmail" placeholder=" " required autocomplete="email" />
+              <label for="loginEmail">Email address</label>
+              <span class="field-line"></span>
+              <span class="field-error">Please enter a valid email</span>
+            </div>
+
+            <div class="form-field">
+              <input type="password" id="loginPassword" placeholder=" " required autocomplete="current-password" />
+              <label for="loginPassword">Password</label>
+              <span class="field-line"></span>
+              <button type="button" class="toggle-pw" id="toggleLoginPw" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+              <span class="field-error">Password is required</span>
+            </div>
+
+            <div class="form-options">
+              <label class="checkbox-wrap">
+                <input type="checkbox" id="rememberMe" />
+                <span class="custom-checkbox"></span>
+                Remember me
+              </label>
+              <a href="#" class="link-muted">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              <span>Sign In</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </form>
+
+          <div class="divider"><span>or continue with</span></div>
+
+          <div class="social-row">
+            <button class="btn-social">
+              <svg viewBox="0 0 24 24"><path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+              Google
+            </button>
+            <button class="btn-social">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </button>
+          </div>
+
+          <p class="switch-text">
+            New to Eclipse Cinema?
+            <button type="button" class="switch-btn" id="toRegister">Create account</button>
+          </p>
+        </div>
+
+        <!-- REGISTER PANEL -->
+        <div class="panel" id="registerPanel">
+          <div class="panel-header">
+            <div class="panel-tag">Join us today</div>
+            <h1>Create<br/><span>Account</span></h1>
+          </div>
+
+          <form id="registerForm" novalidate>
+            <div class="fields-row">
+              <div class="form-field">
+                <input type="text" id="regFirstName" placeholder=" " required />
+                <label for="regFirstName">First name</label>
+                <span class="field-line"></span>
+                <span class="field-error">Required</span>
+              </div>
+              <div class="form-field">
+                <input type="text" id="regLastName" placeholder=" " required />
+                <label for="regLastName">Last name</label>
+                <span class="field-line"></span>
+                <span class="field-error">Required</span>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <input type="email" id="regEmail" placeholder=" " required autocomplete="email" />
+              <label for="regEmail">Email address</label>
+              <span class="field-line"></span>
+              <span class="field-error">Please enter a valid email</span>
+            </div>
+
+            <div class="form-field">
+              <input type="password" id="regPassword" placeholder=" " required autocomplete="new-password" />
+              <label for="regPassword">Password</label>
+              <span class="field-line"></span>
+              <button type="button" class="toggle-pw" id="toggleRegPw" aria-label="Show password">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+              <span class="field-error">Min 8 characters</span>
+              <div class="pw-strength" id="pwStrength">
+                <div class="pw-bar" id="pwBar"></div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              <span>Create Account</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+
+            <p class="terms-note">
+              By signing up you agree to our <a href="#" class="link-accent">Terms of Service</a> and <a href="#" class="link-accent">Privacy Policy</a>.
+            </p>
+          </form>
+
+          <p class="switch-text">
+            Already have an account?
+            <button type="button" class="switch-btn" id="toLogin">Sign in</button>
+          </p>
+        </div>
+
+      </div><!-- /panels-wrapper -->
+
+      <!-- Side decorative strip -->
+      <div class="deco-strip" id="decoStrip">
+        <div class="deco-content">
+          <div class="film-perfs">
+            <div class="perf" style="--i:0"></div>
+            <div class="perf" style="--i:1"></div>
+            <div class="perf" style="--i:2"></div>
+            <div class="perf" style="--i:3"></div>
+            <div class="perf" style="--i:4"></div>
+            <div class="perf" style="--i:5"></div>
+          </div>
+          <div class="deco-msg" id="decoMsg">
+            <p>New here?</p>
+            <small>Join millions of film lovers on Eclipse Cinema</small>
+            <button type="button" class="btn-outline" id="decoSwitch">Get Started</button>
+          </div>
+          <div class="film-perfs film-perfs--bottom">
+            <div class="perf" style="--i:0"></div>
+            <div class="perf" style="--i:1"></div>
+            <div class="perf" style="--i:2"></div>
+            <div class="perf" style="--i:3"></div>
+            <div class="perf" style="--i:4"></div>
+            <div class="perf" style="--i:5"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /auth-container -->
+
+    <script src="script/login.js"></script>
+  </body>
+</html>
