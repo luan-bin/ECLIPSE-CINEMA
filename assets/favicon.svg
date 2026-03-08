@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141418"/>
+      <stop offset="100%" stop-color="#0a0a0f"/>
+    </linearGradient>
+    <linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8192c"/>
+      <stop offset="100%" stop-color="#b5101e"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+
+  <!-- Subtle border -->
+  <rect width="64" height="64" rx="14" fill="none" stroke="rgba(232,25,44,0.3)" stroke-width="1.5"/>
+
+  <!-- Film strip left perforations -->
+  <rect x="5" y="10" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="5" y="19" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="5" y="28" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="5" y="37" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="5" y="46" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+
+  <!-- Film strip right perforations -->
+  <rect x="53" y="10" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="53" y="19" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="53" y="28" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="53" y="37" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+  <rect x="53" y="46" width="6" height="5" rx="1.5" fill="#1e1e28"/>
+
+  <!-- Film strip left bar -->
+  <rect x="5" y="8" width="6" height="49" rx="2" fill="#1a1a22"/>
+
+  <!-- Film strip right bar -->
+  <rect x="53" y="8" width="6" height="49" rx="2" fill="#1a1a22"/>
+
+  <!-- Perforations on top of bars -->
+  <rect x="6" y="10" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="6" y="19" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="6" y="28" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="6" y="37" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="6" y="46" width="4" height="4" rx="1" fill="#0a0a0f"/>
+
+  <rect x="54" y="10" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="54" y="19" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="54" y="28" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="54" y="37" width="4" height="4" rx="1" fill="#0a0a0f"/>
+  <rect x="54" y="46" width="4" height="4" rx="1" fill="#0a0a0f"/>
+
+  <!-- Center play button circle -->
+  <circle cx="32" cy="32" r="13" fill="url(#red)" filter="url(#glow)"/>
+  <circle cx="32" cy="32" r="13" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+  <!-- Play triangle -->
+  <polygon points="29,26 29,38 41,32" fill="white" opacity="0.95"/>
+
+  <!-- Top highlight on circle -->
+  <ellipse cx="32" cy="25" rx="7" ry="4" fill="rgba(255,255,255,0.08)"/>
+</svg>
