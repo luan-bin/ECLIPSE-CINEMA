@@ -147,6 +147,43 @@
     }
   }
 
+  /**
+   * Cập nhật thông tin profile cơ bản cho user hiện tại
+   * @param {{ firstName?: string, lastName?: string, avatar?: string }} updates
+   * @returns {{ success: boolean, message: string, user?: object }}
+   */
+  function updateProfile(updates) {
+    const session = getSession();
+    if (!session || !session.user) {
+      return { success: false, message: 'Bạn chưa đăng nhập.' };
+    }
+
+    const users = getUsers();
+    const idx = users.findIndex((u) => u.id === session.user.id);
+    if (idx === -1) {
+      return { success: false, message: 'Không tìm thấy tài khoản.' };
+    }
+
+    const user = users[idx];
+    if (typeof updates.firstName === 'string' && updates.firstName.trim()) {
+      user.firstName = updates.firstName.trim();
+    }
+    if (typeof updates.lastName === 'string' && updates.lastName.trim()) {
+      user.lastName = updates.lastName.trim();
+    }
+    if (typeof updates.avatar === 'string') {
+      user.avatar = updates.avatar.trim() || null;
+    }
+
+    users[idx] = user;
+    saveUsers(users);
+
+    const { password: _, ...safeUser } = user;
+    _createSession(safeUser, false);
+
+    return { success: true, message: 'Đã cập nhật hồ sơ.', user: safeUser };
+  }
+
   /* ── Private ── */
 
   function _createSession(user, remember) {
@@ -169,6 +206,6 @@
   }
 
   /* ── Export ── */
-  global.CinemaAuth = { register, login, logout, getSession, isLoggedIn, getRemembered };
+  global.CinemaAuth = { register, login, logout, getSession, isLoggedIn, getRemembered, updateProfile };
 
 })(window);
