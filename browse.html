@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khám Phá Phim – Eclipse Cinema</title>
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/favicon-180.png" />
+  <link rel="stylesheet" href="styles/home.css" />
+  <link rel="stylesheet" href="styles/browse.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon"><i class="fas fa-film"></i></span>
+        <span class="logo-text"><span class="logo-accent">ECLIPSE</span> CINEMA</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+        <li><a href="index.html#now-playing" class="nav-link">Đang Chiếu</a></li>
+        <li><a href="index.html#upcoming" class="nav-link">Sắp Chiếu</a></li>
+        <li><a href="index.html#top-rated" class="nav-link">Đánh Giá Cao</a></li>
+        <li><a href="browse.html" class="nav-link active">Khám Phá</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Search -->
+        <div class="search-wrapper" id="searchWrapper">
+          <input type="text" class="search-input" id="searchInput" placeholder="Tìm kiếm phim..." />
+          <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+          <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <!-- User Dropdown -->
+        <div class="user-dropdown" id="userDropdown">
+          <button class="user-avatar" id="userAvatarBtn">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=cinema" alt="User" />
+          </button>
+          <div class="user-menu" id="userMenu">
+            <div class="user-menu-header">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=cinema" alt="User" />
+              <div>
+                <p class="user-name">Khách</p>
+                <p class="user-email">user@eclipse.vn</p>
+              </div>
+            </div>
+            <ul class="user-menu-list">
+              <li><a href="profile.html"><i class="fas fa-user"></i> Hồ Sơ</a></li>
+              <li><a href="#"><i class="fas fa-heart"></i> Yêu Thích</a></li>
+              <li><a href="#"><i class="fas fa-clock"></i> Xem Sau</a></li>
+              <li><a href="#"><i class="fas fa-cog"></i> Cài Đặt</a></li>
+              <li class="menu-divider"></li>
+              <li><a href="login.html" class="logout-link"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Hamburger -->
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BROWSE LAYOUT -->
+  <main class="browse-layout">
+    <!-- Filters sidebar -->
+    <aside class="browse-filters">
+      <div class="filters-header">
+        <h1>Khám Phá Phim</h1>
+        <p>Filter theo thể loại, năm và sắp xếp.</p>
+      </div>
+
+      <div class="filter-group">
+        <label for="genreSelect"><i class="fas fa-tags"></i> Thể Loại</label>
+        <select id="genreSelect">
+          <option value="">Tất cả</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="yearSelect"><i class="fas fa-calendar-alt"></i> Năm Phát Hành</label>
+        <select id="yearSelect">
+          <option value="">Tất cả</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="sortSelect"><i class="fas fa-sort-amount-down"></i> Sắp Xếp</label>
+        <select id="sortSelect">
+          <option value="popularity.desc">Phổ biến nhất</option>
+          <option value="vote_average.desc">Điểm TMDB cao nhất</option>
+          <option value="release_date.desc">Mới nhất</option>
+          <option value="release_date.asc">Cũ nhất</option>
+        </select>
+      </div>
+
+      <button id="applyFiltersBtn" class="btn-primary full-width">
+        <i class="fas fa-filter"></i> Áp Dụng
+      </button>
+    </aside>
+
+    <!-- Results -->
+    <section class="browse-results">
+      <div class="section-header">
+        <div class="section-title-block">
+          <span class="section-label">Khám Phá</span>
+          <h2 class="section-title" id="resultsTitle">Tất cả phim</h2>
+        </div>
+        <span class="browse-count" id="resultsCount"></span>
+      </div>
+
+      <div class="movies-grid" id="browseGrid">
+        <!-- cards injected -->
+      </div>
+
+      <div class="browse-status" id="browseStatus"></div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <span class="logo-icon"><i class="fas fa-film"></i></span>
+          <span class="logo-text"><span class="logo-accent">ECLIPSE</span> CINEMA</span>
+        </a>
+        <p>Thế giới điện ảnh trong tầm tay bạn. Khám phá hàng ngàn bộ phim hấp dẫn mỗi ngày.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Khám Phá</h4>
+        <ul>
+          <li><a href="browse.html">Tất Cả Phim</a></li>
+          <li><a href="index.html#now-playing">Đang Chiếu</a></li>
+          <li><a href="index.html#upcoming">Sắp Chiếu</a></li>
+          <li><a href="index.html#top-rated">Top IMDb</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Thể Loại</h4>
+        <ul>
+          <li><a href="#">Hành Động</a></li>
+          <li><a href="#">Kinh Dị</a></li>
+          <li><a href="#">Lãng Mạn</a></li>
+          <li><a href="#">Hoạt Hình</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Hỗ Trợ</h4>
+        <ul>
+          <li><a href="#">Về Chúng Tôi</a></li>
+          <li><a href="#">Liên Hệ</a></li>
+          <li><a href="#">Điều Khoản</a></li>
+          <li><a href="#">Quyền Riêng Tư</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Eclipse Cinema. Dữ liệu phim từ <a href="https://www.themoviedb.org" target="_blank">TMDB</a>.</p>
+      <p>Made with <i class="fas fa-heart" style="color: var(--red)"></i> for Cinema Lovers</p>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script/auth.js"></script>
+  <script src="script/config.js"></script>
+  <script src="script/browse.js"></script>
+</body>
+</html>
+
